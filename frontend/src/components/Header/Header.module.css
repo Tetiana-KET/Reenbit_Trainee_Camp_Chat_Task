@@ -1,0 +1,32 @@
+.header {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	z-index: 3;
+	border-bottom: 1px solid var(--accent-color);
+	box-shadow: var(--box-shadow);
+}
+
+.header__container {
+	padding: 10px 10%;
+	display: flex;
+	justify-content: space-between;
+}
+
+.header-logo-wrap {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.header-logo-wrap svg {
+	cursor: pointer;
+	transition: all 0.5s;
+}
+
+@media (hover: hover) {
+	.header-logo-wrap:hover svg {
+		fill: var(--accent-color);
+	}
+}

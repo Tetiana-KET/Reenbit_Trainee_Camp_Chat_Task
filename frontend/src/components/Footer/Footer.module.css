@@ -1,0 +1,49 @@
+.footer {
+	border-top: 1px solid var(--accent-color);
+	box-shadow: var(--box-shadow);
+}
+
+.footer-container {
+	padding: 10px 10%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	overflow: hidden;
+}
+
+.social-items {
+	display: flex;
+	flex: 1;
+	align-items: center;
+	justify-content: space-between;
+	gap: 10px;
+}
+
+.social-item {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.social-item-link {
+	display: flex;
+	font-size: 22px;
+}
+
+.social-item-svg,
+.social-item-link {
+	transition: all 0.5s;
+	cursor: pointer;
+}
+
+@media (hover: hover) {
+	.githubLink:hover .social-item-svg,
+	.linkedinLink:hover .social-item-svg {
+		fill: var(--accent-color);
+	}
+
+	.social-item-link:hover {
+		color: var(--accent-color);
+		text-shadow: var(--text-shadow);
+	}
+}
