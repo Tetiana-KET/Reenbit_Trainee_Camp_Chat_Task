@@ -16,7 +16,27 @@ router.post(
 		}
 	}
 );
-router.post('/login', login);
-router.post('/logout', logout);
+
+router.post(
+	'/login',
+	async (req: Request, res: Response, next: NextFunction) => {
+		try {
+			await login(req, res);
+		} catch (error) {
+			next(error);
+		}
+	}
+);
+
+router.post(
+	'/logout',
+	async (req: Request, res: Response, next: NextFunction) => {
+		try {
+			await logout(req, res);
+		} catch (error) {
+			next(error);
+		}
+	}
+);
 
 export default router;

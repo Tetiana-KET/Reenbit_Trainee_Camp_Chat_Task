@@ -7,10 +7,18 @@ import { authMessages } from '@shared/consts/messages';
 import { PASS_LENGTH } from '@shared/consts/passLength';
 import { bcryptSaltLength } from 'backend/src/consts/bcryptSaltLength';
 import { HttpStatusCode } from '@shared/types/httpStatusCode';
+
 import { generateToken } from 'backend/src/utils/generateToken';
+import { returnCaughtError } from 'backend/src/utils/returnCaughtError';
 
 export async function signup(req: Request, res: Response) {
 	const { email, firstName, lastName, password, profileImg } = req.body;
+
+	if (!email || !firstName || !lastName || !password) {
+		return res
+			.status(HttpStatusCode.BAD_REQUEST)
+			.json({ message: authMessages.REQUIRED_FIELDS });
+	}
 
 	try {
 		if (password.length < PASS_LENGTH) {
@@ -54,11 +62,6 @@ export async function signup(req: Request, res: Response) {
 				.json({ message: authMessages.INVALID_DATA });
 		}
 	} catch (err: unknown) {
-		if (err instanceof Error) {
-			console.error('Error in signup.controller:', err.message);
-			res.status(HttpStatusCode.BAD_REQUEST).json({ message: err.message });
-		} else {
-			console.error('An unknown error occurred');
-		}
+		returnCaughtError(err, res, 'signup.controller');
 	}
 }
