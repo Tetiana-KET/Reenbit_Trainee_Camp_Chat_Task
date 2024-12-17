@@ -9,4 +9,7 @@ export default defineConfig({
 			localsConvention: 'camelCase',
 		},
 	},
+	build: {
+		minify: 'esbuild',
+	},
 });

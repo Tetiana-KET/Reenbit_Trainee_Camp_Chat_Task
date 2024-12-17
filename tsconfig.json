@@ -1,0 +1,23 @@
+{
+	"compilerOptions": {
+		"target": "ES2022",
+		"module": "Node16",
+		"moduleResolution": "Node16",
+		"esModuleInterop": true,
+		"forceConsistentCasingInFileNames": false,
+		"baseUrl": "./",
+		"paths": {
+			"@shared/*": ["shared/*"]
+		},
+
+		/* Linting */
+		"strict": true,
+		"noImplicitAny": true,
+		"skipLibCheck": true,
+		/* Emit */
+		"removeComments": true,
+		"allowJs": true
+	},
+	"include": ["frontend/src/**/*", "backend/src/**/*", "shared/**/*"],
+	"exclude": ["./node_modules"]
+}
