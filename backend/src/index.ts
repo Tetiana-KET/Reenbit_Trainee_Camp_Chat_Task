@@ -1,9 +1,11 @@
-import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import express from 'express';
 
-import authRoutes from './routes/auth.routes';
 import { connectDB } from './lib/db';
+import authRoutes from './routes/auth.routes';
+
+import { PORT_MSG } from '@shared/consts/messages';
 
 dotenv.config();
 
@@ -16,7 +18,7 @@ let server;
 connectDB()
 	.then(() => {
 		server = app.listen(process.env.PORT, () => {
-			console.log(`Server is running on port ${process.env.PORT}`);
+			console.log(`${PORT_MSG} ${process.env.PORT}`);
 		});
 	})
 	.catch(error => {

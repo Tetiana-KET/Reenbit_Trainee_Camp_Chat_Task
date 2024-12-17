@@ -1,3 +1,4 @@
+import { PASS_LENGTH } from '@shared/consts/passLength';
 import mongoose from 'mongoose';
 
 const userSchema = new mongoose.Schema(
@@ -18,7 +19,7 @@ const userSchema = new mongoose.Schema(
 		password: {
 			type: String,
 			required: true,
-			minLength: 8,
+			minLength: PASS_LENGTH,
 		},
 		profileImg: {
 			type: String,

@@ -1,0 +1,2 @@
+export const ACCESS_TOKEN_EXPIRATION_DAYS = '7d';
+export const ACCESS_TOKEN_EXPIRATION_MS = 7 * 24 * 60 * 60 * 1000;
