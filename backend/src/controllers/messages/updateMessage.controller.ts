@@ -13,7 +13,7 @@ export async function updateMessage(req: Request, res: Response) {
 		const { id: messageId } = req.params;
 		const { text, image } = req.body;
 
-		let imageUrl = getImageUrl(image);
+		let imageUrl = await getImageUrl(image);
 
 		const updatedMessage = await Message.findByIdAndUpdate(
 			messageId,

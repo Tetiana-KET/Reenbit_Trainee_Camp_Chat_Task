@@ -4,7 +4,7 @@
 		"typeRoots": ["node_modules/@types", "src/types"],
 		"outDir": "./dist",
 		"rootDir": "../",
-		"types": ["node", "express"]
+		"types": ["express"]
 	},
 	"include": ["src/**/*", "../shared/**/*", "src/types/express.d.ts"]
 }

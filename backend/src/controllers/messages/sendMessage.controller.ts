@@ -12,7 +12,7 @@ export async function sendMessage(req: Request, res: Response) {
 		const { id: receiverId } = req.params;
 		const { text, image } = req.body;
 
-		let imageUrl = getImageUrl(image);
+		let imageUrl = await getImageUrl(image);
 
 		const newMessage = new Message({
 			senderId,
