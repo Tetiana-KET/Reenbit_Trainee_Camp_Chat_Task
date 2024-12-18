@@ -4,7 +4,11 @@ export const PORT_MSG = 'Server is running on port:';
 
 export const UNKNOWN_ERR_MSG = 'An unknown error occurred';
 
-export const PROFILE_IMG_REQUIRED = 'Profile image is required!';
+export const responseMessages = {
+	PROFILE_IMG_REQUIRED: 'Profile image is required!',
+	MISSING_UPDATE_CONTENT: 'No text or image provided for update',
+	DELETE_SUCCESS: 'Message deleted successfully',
+};
 
 export const authMessages = {
 	EMAIL_EXIST:

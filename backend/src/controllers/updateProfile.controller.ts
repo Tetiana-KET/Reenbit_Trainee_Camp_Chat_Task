@@ -1,11 +1,11 @@
 import { Request, Response } from 'express';
 
 import User from 'backend/src/models/user.model';
+import { returnCaughtError } from 'backend/src/utils/returnCaughtError';
 
-import { PROFILE_IMG_REQUIRED } from '@shared/consts/messages';
+import { responseMessages } from '@shared/consts/messages';
 import { HttpStatusCode } from '@shared/types/httpStatusCode';
 
-import { returnCaughtError } from 'backend/src/utils/returnCaughtError';
 import cloudinary from '../lib/cloudinary';
 
 export async function updateProfile(req: Request, res: Response) {
@@ -16,7 +16,7 @@ export async function updateProfile(req: Request, res: Response) {
 		if (!profileImg) {
 			return res
 				.status(HttpStatusCode.BAD_REQUEST)
-				.json({ message: PROFILE_IMG_REQUIRED });
+				.json({ message: responseMessages.PROFILE_IMG_REQUIRED });
 		}
 
 		const uploadImgResponse = await cloudinary.uploader.upload(profileImg);
