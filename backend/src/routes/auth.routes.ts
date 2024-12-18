@@ -6,6 +6,7 @@ import { logout } from '../controllers/auth/logout.controller';
 import { updateProfile } from '../controllers/updateProfile.controller';
 
 import { checkAuthentification } from '../middleware/auth.checkAuthentification';
+import { checkAuth } from '../controllers/auth/checkAuth.controller';
 
 const router = express.Router();
 
@@ -53,5 +54,7 @@ router.put(
 		}
 	}
 );
+
+router.get('/check-auth', checkAuthentification, checkAuth);
 
 export default router;
