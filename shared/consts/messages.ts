@@ -4,6 +4,8 @@ export const PORT_MSG = 'Server is running on port:';
 
 export const UNKNOWN_ERR_MSG = 'An unknown error occurred';
 
+export const PROFILE_IMG_REQUIRED = 'Profile image is required!';
+
 export const authMessages = {
 	EMAIL_EXIST:
 		'The user with this email already exists, please try another email or login!',
@@ -12,4 +14,6 @@ export const authMessages = {
 	INVALID_CREDENTIALS: 'Invalid email or password',
 	REQUIRED_FIELDS: 'Email, firstName, lastName and password are required!',
 	LOGOUT_SUCCESS: 'Logged out successfully!',
+	UNAUTHORIZED:
+		"Unauthorized, Oops! It seems you're not authorized to view this page.",
 };

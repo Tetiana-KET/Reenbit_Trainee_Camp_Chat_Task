@@ -5,7 +5,7 @@ import { Request, Response } from 'express';
 
 export async function logout(req: Request, res: Response) {
 	try {
-		res.cookie('chat-token', '', {
+		res.cookie('chatToken', '', {
 			maxAge: 0,
 		});
 		res

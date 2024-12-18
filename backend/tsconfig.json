@@ -1,8 +1,10 @@
 {
 	"extends": "../tsconfig.json",
 	"compilerOptions": {
+		"typeRoots": ["node_modules/@types", "src/types"],
 		"outDir": "./dist",
-		"rootDir": "../"
+		"rootDir": "../",
+		"types": ["node", "express"]
 	},
-	"include": ["src/**/*", "../shared/**/*"]
+	"include": ["src/**/*", "../shared/**/*", "src/types/express.d.ts"]
 }

@@ -14,7 +14,7 @@ export function generateToken(userId: Types.ObjectId, res: Response) {
 		expiresIn: ACCESS_TOKEN_EXPIRATION_DAYS,
 	});
 
-	res.cookie('chat-token', token, {
+	res.cookie('chatToken', token, {
 		maxAge: ACCESS_TOKEN_EXPIRATION_MS,
 		httpOnly: true,
 		sameSite: 'strict',

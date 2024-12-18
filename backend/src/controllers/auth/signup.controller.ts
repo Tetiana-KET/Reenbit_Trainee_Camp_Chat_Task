@@ -12,15 +12,15 @@ import { generateToken } from 'backend/src/utils/generateToken';
 import { returnCaughtError } from 'backend/src/utils/returnCaughtError';
 
 export async function signup(req: Request, res: Response) {
-	const { email, firstName, lastName, password, profileImg } = req.body;
-
-	if (!email || !firstName || !lastName || !password) {
-		return res
-			.status(HttpStatusCode.BAD_REQUEST)
-			.json({ message: authMessages.REQUIRED_FIELDS });
-	}
-
 	try {
+		const { email, firstName, lastName, password, profileImg } = req.body;
+
+		if (!email || !firstName || !lastName || !password) {
+			return res
+				.status(HttpStatusCode.BAD_REQUEST)
+				.json({ message: authMessages.REQUIRED_FIELDS });
+		}
+
 		if (password.length < PASS_LENGTH) {
 			return res
 				.status(HttpStatusCode.BAD_REQUEST)

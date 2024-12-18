@@ -10,9 +10,8 @@ import { generateToken } from 'backend/src/utils/generateToken';
 import { returnCaughtError } from 'backend/src/utils/returnCaughtError';
 
 export async function login(req: Request, res: Response) {
-	const { email, password } = req.body;
-
 	try {
+		const { email, password } = req.body;
 		const user = await User.findOne({ email });
 		const isPasswordValid = await bcrypt.compare(
 			password,
