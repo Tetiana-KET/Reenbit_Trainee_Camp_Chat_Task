@@ -18,6 +18,8 @@ export const authMessages = {
 	INVALID_CREDENTIALS: 'Invalid email or password',
 	REQUIRED_FIELDS: 'Email, firstName, lastName and password are required!',
 	LOGOUT_SUCCESS: 'Logged out successfully!',
+	LOGIN_SUCCESS: 'Logged in successfully!',
 	UNAUTHORIZED:
 		"Unauthorized, Oops! It seems you're not authorized to view this page.",
+	CREATED_SUCCESS: 'Account created successfully',
 };

@@ -1,6 +1,11 @@
 import styles from './Header.module.css';
+import { Link } from 'react-router-dom';
+import { useAuthStore } from '../../store/useAuthStore';
+import { LogOut, Settings, User } from 'lucide-react';
 
-function Header(): JSX.Element {
+function Header() {
+	const { logout, authUser } = useAuthStore();
+
 	return (
 		<header className={styles.header} data-testid='header'>
 			<div className={styles.headerContainer}>
@@ -44,7 +49,33 @@ function Header(): JSX.Element {
 						</g>
 					</svg>
 				</div>
-				<button className='btn btn-neutral'>Theme Switcher</button>
+
+				<div className='flex items-center gap-2'>
+					<Link
+						to={'/settings'}
+						className={`btn btn-sm gap-2 transition-colors`}
+					>
+						<Settings className='size-4' />
+						<span className='hidden sm:inline'>Settings</span>
+					</Link>
+
+					{authUser && (
+						<>
+							<Link to={'/profile'} className={`btn btn-sm gap-2`}>
+								<User className='size-5' />
+								<span className='hidden sm:inline'>Profile</span>
+							</Link>
+
+							<button
+								className='btn btn-sm gap-2 hover:text-accent'
+								onClick={logout}
+							>
+								<LogOut className='size-5' />
+								<span className='hidden sm:inline'>Logout</span>
+							</button>
+						</>
+					)}
+				</div>
 			</div>
 		</header>
 	);
