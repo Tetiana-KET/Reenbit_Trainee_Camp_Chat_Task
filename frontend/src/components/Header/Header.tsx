@@ -44,7 +44,7 @@ function Header(): JSX.Element {
 						</g>
 					</svg>
 				</div>
-				<div>ThemeSwitcher</div>
+				<button className='btn btn-neutral'>Theme Switcher</button>
 			</div>
 		</header>
 	);

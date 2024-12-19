@@ -1,8 +1,10 @@
 import { createBrowserRouter } from 'react-router-dom';
 import Layout from '../components/Layout/Layout';
-import { Chat } from '../pages/Chat.page';
-import { Login } from '../pages/Login.page';
-import { Register } from '../pages/Register.page';
+import { ChatPage } from '../pages/Chat.page';
+import { RegisterPage } from '../pages/Register.page';
+import { LoginPage } from '../pages/Login.page';
+import { ProfilePage } from '../pages/Profile.page';
+import { SettingsPage } from '../pages/Settings.page';
 
 const router = createBrowserRouter([
 	{
@@ -11,15 +13,27 @@ const router = createBrowserRouter([
 		children: [
 			{
 				index: true,
-				element: <Chat />,
+				element: <ChatPage />,
+			},
+			{
+				path: 'chat',
+				element: <ChatPage />,
 			},
 			{
 				path: 'register',
-				element: <Register />,
+				element: <RegisterPage />,
 			},
 			{
 				path: 'login',
-				element: <Login />,
+				element: <LoginPage />,
+			},
+			{
+				path: 'settings',
+				element: <SettingsPage />,
+			},
+			{
+				path: 'profile',
+				element: <ProfilePage />,
 			},
 		],
 	},
