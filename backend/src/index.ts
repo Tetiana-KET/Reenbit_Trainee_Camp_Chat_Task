@@ -12,7 +12,12 @@ import { PORT_MSG } from '@shared/consts/messages';
 dotenv.config();
 
 const app = express();
-app.use(cors());
+app.use(
+	cors({
+		origin: process.env.FRONT_URL,
+		credentials: true,
+	})
+);
 app.use(express.json());
 app.use(cookieParser());
 app.use('/api/auth', authRoutes);
