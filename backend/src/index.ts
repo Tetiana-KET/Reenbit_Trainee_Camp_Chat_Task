@@ -17,6 +17,7 @@ const PORT = process.env.PORT;
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+const backendPath = path.resolve(__dirname, '..');
 
 const app = express();
 app.use(
@@ -31,7 +32,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/message', messageRoutes);
 
 if (process.env.NODE_ENV === 'production') {
-	const frontendPath = path.join(__dirname, '../frontend/dist');
+	const frontendPath = path.join(backendPath, '../frontend/dist');
 	app.use(express.static(frontendPath));
 
 	app.get('*', (_req, res) => {
