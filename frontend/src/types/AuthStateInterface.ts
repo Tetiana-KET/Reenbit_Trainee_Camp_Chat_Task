@@ -1,4 +1,6 @@
-export interface AuthState {
+import { FormData } from './FormData';
+
+export interface AuthStateInterface {
 	authUser: any | null;
 	isSigningUp: boolean;
 	isLoggingIn: boolean;
@@ -6,7 +8,7 @@ export interface AuthState {
 	isUpdatingProfile: boolean;
 	isCheckingAuth: boolean;
 	checkAuth: () => Promise<void>;
-	signup: (formData: any) => Promise<void>;
-	login: (formData: any) => Promise<void>;
+	signup: (formData: FormData) => Promise<void>;
+	login: (formData: FormData) => Promise<void>;
 	logout: () => Promise<void>;
 }

@@ -1,10 +1,10 @@
-import { AuthState } from '../../types/AuthState';
 import { apiRoutes } from '../../consts/apiRoutes';
 import { axiosInstance } from '../../lib/axios';
+import { AuthStateInterface } from '../../types/AuthStateInterface';
 import { checkReturnCaughtError } from '../../utils/checkReturnCaughtError';
 
 export const checkAuthController = async (
-	set: (state: Partial<AuthState>) => void
+	set: (state: Partial<AuthStateInterface>) => void
 ) => {
 	try {
 		const res = await axiosInstance.get(apiRoutes.CHECK_AUTH);

@@ -42,6 +42,6 @@ export async function checkAuthentification(
 		req.user = user;
 		next();
 	} catch (err: unknown) {
-		returnCaughtError(err, res, 'auth.protectRoute');
+		returnCaughtError(err, res, 'auth.checkAuthentification');
 	}
 }

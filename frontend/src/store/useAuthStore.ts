@@ -1,13 +1,13 @@
 import { create } from 'zustand';
 
-import { AuthState } from '../types/AuthState';
-import { FormData } from '../types/FormData';
 import { checkAuthController } from '../controllers/auth/checkAuth.controller';
-import { signupController } from '../controllers/auth/signup.controller';
-import { logoutController } from '../controllers/auth/logout.controller';
 import { loginController } from '../controllers/auth/login.controller';
+import { logoutController } from '../controllers/auth/logout.controller';
+import { signupController } from '../controllers/auth/signup.controller';
+import { AuthStateInterface } from '../types/AuthStateInterface';
+import { FormData } from '../types/FormData';
 
-export const useAuthStore = create<AuthState>(set => ({
+export const useAuthStore = create<AuthStateInterface>(set => ({
 	authUser: null,
 	isSigningUp: false,
 	isLoggingIn: false,
