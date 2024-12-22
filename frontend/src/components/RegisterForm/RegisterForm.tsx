@@ -24,7 +24,7 @@ export function RegisterForm() {
 	};
 
 	return (
-		<div className='w-full'>
+		<div className='flex flex-col m-auto w-full'>
 			<div className='text-center mb-6'>
 				<div className='flex flex-col items-center gap-2 group'>
 					<h1 className='text-2xl font-bold mt-2'>Create Account</h1>

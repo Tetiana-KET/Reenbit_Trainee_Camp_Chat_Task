@@ -36,11 +36,10 @@ body {
 
 .main-content-wrapper {
 	flex: 1 1 100%;
-	padding: 20px 10%;
 	overflow-y: auto;
+	height: 100%;
 	display: flex;
-	justify-content: center;
-	align-items: center;
+	flex-direction: column;
 }
 
 .auth-form__container {
@@ -49,6 +48,7 @@ body {
 	min-width: 250px;
 	flex-basis: 500px;
 	flex-direction: column;
+	justify-self: center;
 	text-align: center;
 	background-color: var(--light-grey-bg-color);
 	padding: 30px;

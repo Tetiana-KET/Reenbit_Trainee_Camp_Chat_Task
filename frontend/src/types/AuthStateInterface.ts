@@ -9,6 +9,6 @@ export interface AuthStateInterface {
 	isCheckingAuth: boolean;
 	checkAuth: () => Promise<void>;
 	signup: (formData: FormData) => Promise<void>;
-	login: (formData: FormData) => Promise<void>;
+	login: (formData: Partial<FormData>) => Promise<void>;
 	logout: () => Promise<void>;
 }

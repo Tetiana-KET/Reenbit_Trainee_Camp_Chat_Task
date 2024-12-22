@@ -9,7 +9,7 @@ import { sendMessageController } from '../controllers/messages/sendMessage.contr
 import { updateMessageController } from '../controllers/messages/updateMessage.controller';
 import { deleteMessageController } from '../controllers/messages/deleteMessage.controller';
 
-export const useChatState = create<ChatStateInterface>(set => ({
+export const useChatStore = create<ChatStateInterface>(set => ({
 	messages: [],
 	users: [],
 	selectedUser: null,
