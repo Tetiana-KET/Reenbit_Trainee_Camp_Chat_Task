@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useAuthStore } from '../../store/useAuthStore';
-import { TextInput } from '../../components/TextInput/TextInput';
-import { PasswordInput } from '../../components/PasswordInput/PasswordInput';
-import { SubmitButton } from '../../components/SubmitButton/SubmitButton';
+import { useAuthStore } from '../../../store/useAuthStore';
+import { PasswordInput } from '../PasswordInput/PasswordInput';
+import { SubmitButton } from '../SubmitButton/SubmitButton';
+import { TextInput } from '../TextInput/TextInput';
 
 export function LoginForm() {
 	const [formData, setFormData] = useState({
@@ -19,8 +19,8 @@ export function LoginForm() {
 	};
 
 	return (
-		<div className='w-full'>
-			<div className='w-full max-w-md space-y-8 p-6 sm:p-12 mx-auto auth-form__container'>
+		<div className='w-full h-full m-auto'>
+			<div className='w-full max-w-md space-y-8 p-6 sm:p-12  auth-form__container'>
 				<form onSubmit={handleSubmit} className='space-y-6'>
 					<TextInput
 						label='Email'

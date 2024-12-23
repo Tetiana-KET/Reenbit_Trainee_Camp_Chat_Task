@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useAuthStore } from '../../store/useAuthStore';
-import { TextInput } from '../../components/TextInput/TextInput';
-import { PasswordInput } from '../../components/PasswordInput/PasswordInput';
-import { SubmitButton } from '../../components/SubmitButton/SubmitButton';
-import { useValidateForm } from '../../hooks/useValidateForm';
+import { useValidateForm } from '../../../hooks/useValidateForm';
+import { useAuthStore } from '../../../store/useAuthStore';
+import { PasswordInput } from '../PasswordInput/PasswordInput';
+import { SubmitButton } from '../SubmitButton/SubmitButton';
+import { TextInput } from '../TextInput/TextInput';
 
 export function RegisterForm() {
 	const [formData, setFormData] = useState({
@@ -24,7 +24,7 @@ export function RegisterForm() {
 	};
 
 	return (
-		<div className='w-full'>
+		<div className='flex flex-col m-auto w-full'>
 			<div className='text-center mb-6'>
 				<div className='flex flex-col items-center gap-2 group'>
 					<h1 className='text-2xl font-bold mt-2'>Create Account</h1>

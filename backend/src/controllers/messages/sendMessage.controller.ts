@@ -23,7 +23,7 @@ export async function sendMessage(req: Request, res: Response) {
 
 		await newMessage.save();
 
-		res.status(HttpStatusCode.CREATED).json(newMessage);
+		res.status(HttpStatusCode.CREATED).json({ message: newMessage });
 	} catch (err: unknown) {
 		returnCaughtError(err, res, 'sendMessage.controller');
 	}
