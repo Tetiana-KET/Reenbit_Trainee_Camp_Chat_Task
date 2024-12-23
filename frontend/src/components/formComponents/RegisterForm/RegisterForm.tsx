@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useAuthStore } from '../../store/useAuthStore';
-import { TextInput } from '../../components/TextInput/TextInput';
-import { PasswordInput } from '../../components/PasswordInput/PasswordInput';
-import { SubmitButton } from '../../components/SubmitButton/SubmitButton';
-import { useValidateForm } from '../../hooks/useValidateForm';
+import { useValidateForm } from '../../../hooks/useValidateForm';
+import { useAuthStore } from '../../../store/useAuthStore';
+import { PasswordInput } from '../PasswordInput/PasswordInput';
+import { SubmitButton } from '../SubmitButton/SubmitButton';
+import { TextInput } from '../TextInput/TextInput';
 
 export function RegisterForm() {
 	const [formData, setFormData] = useState({

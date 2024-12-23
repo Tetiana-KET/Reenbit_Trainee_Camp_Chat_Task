@@ -4,11 +4,13 @@ import { User } from './User';
 export interface ChatStateInterface {
 	messages: Message[];
 	users: User[];
-	selectedUser: null;
+	selectedUser: User | null;
 	isUsersLoading: boolean;
 	isMessagesLoading: boolean;
 	isMessageSending: boolean;
 	isMessageDeleting: boolean;
+
+	setSelectedUser: (selectedUser: User | null) => void;
 
 	getUsers: () => Promise<void>;
 	getMessages: (userId: string) => Promise<void>;

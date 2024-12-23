@@ -18,6 +18,12 @@ export const useChatStore = create<ChatStateInterface>(set => ({
 	isMessageSending: false,
 	isMessageDeleting: false,
 
+	setSelectedUser: selectedUser =>
+		set(state => ({
+			...state,
+			selectedUser,
+		})),
+
 	getUsers: async () => {
 		await getUsersController(set);
 	},
