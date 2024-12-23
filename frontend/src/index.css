@@ -36,8 +36,9 @@ body {
 
 .main-content-wrapper {
 	flex: 1 1 100%;
-	overflow-y: auto;
+	overflow: hidden;
 	height: 100%;
+	padding: 10px;
 	display: flex;
 	flex-direction: column;
 }

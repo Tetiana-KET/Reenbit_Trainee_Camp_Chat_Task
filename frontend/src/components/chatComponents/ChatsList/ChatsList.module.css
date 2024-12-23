@@ -1,8 +1,6 @@
-.contactsListWrapper {
+.chatsListWrapper {
 	display: flex;
 	flex-direction: column;
-	padding: 10px;
 	border-right: 1px solid var(--accent-color);
-	box-shadow: var(--box-shadow);
 	overflow: auto;
 }

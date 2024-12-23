@@ -3,7 +3,7 @@ import { Users } from 'lucide-react';
 
 import { useChatStore } from '../../../store/useChatStore';
 
-import { ContactsListSkeleton } from '../../skeletons/ContactsListSkeleton/ContactsListSkeleton';
+import { ChatsListSkeleton } from '../../skeletons/ChatsListSkeleton';
 
 import styles from './ChatsList.module.css';
 
@@ -15,11 +15,11 @@ export function ChatsList() {
 		getUsers();
 	}, [getUsers]);
 
-	if (isUsersLoading) return <ContactsListSkeleton />;
+	if (isUsersLoading) return <ChatsListSkeleton />;
 
 	return (
 		<aside
-			className={`${styles.contactsListWrapper} h-full w-30 lg:w-80 flex flex-col transition-all duration-200 `}
+			className={`${styles.chatsListWrapper} h-full w-30 lg:w-80 flex flex-col transition-all duration-200 `}
 		>
 			<div className='border-b-2 border-gray-400 bg-gray-200 w-full p-5'>
 				<div className='flex items-center gap-2'>
@@ -28,7 +28,7 @@ export function ChatsList() {
 				</div>
 			</div>
 
-			<div className='overflow-y-auto w-full py-3'>
+			<div className='overflow-y-auto w-full p-3'>
 				{users.map(user => (
 					<button
 						key={user._id}

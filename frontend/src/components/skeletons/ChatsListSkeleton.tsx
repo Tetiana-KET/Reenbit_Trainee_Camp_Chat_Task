@@ -1,6 +1,6 @@
 import { Users } from 'lucide-react';
 
-export function ContactsListSkeleton() {
+export function ChatsListSkeleton() {
 	const skeletonContacts = Array(8).fill(null);
 
 	return (
