@@ -1,7 +1,9 @@
 import { FormData } from './FormData';
+import { User } from './User';
 
 export interface AuthStateInterface {
-	authUser: any | null;
+	authUser: User | null;
+	usersOnline: User[];
 	isSigningUp: boolean;
 	isLoggingIn: boolean;
 	isLoggingOut: boolean;

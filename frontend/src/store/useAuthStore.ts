@@ -9,6 +9,7 @@ import { FormData } from '../types/FormData';
 
 export const useAuthStore = create<AuthStateInterface>(set => ({
 	authUser: null,
+	usersOnline: [],
 	isSigningUp: false,
 	isLoggingIn: false,
 	isLoggingOut: false,
