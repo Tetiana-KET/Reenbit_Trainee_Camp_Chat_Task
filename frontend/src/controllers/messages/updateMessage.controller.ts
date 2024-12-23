@@ -1,4 +1,4 @@
-import { Message } from 'types/Message';
+import { MessageInterface } from 'types/MessageInterface';
 import { apiRoutes } from '../../consts/apiRoutes';
 import { axiosInstance } from '../../lib/axios';
 import { ChatStateInterface } from '../../types/ChatStateInterface';
@@ -10,17 +10,17 @@ export const updateMessageController = async (
 			| Partial<ChatStateInterface>
 			| ((state: ChatStateInterface) => Partial<ChatStateInterface>)
 	) => void,
-	messageData: Partial<Message>
+	messageData: Partial<MessageInterface>
 ) => {
 	set({ isMessageSending: true });
 	try {
 		const response = await axiosInstance.put(
-			`${apiRoutes.UPDATE_MSG}${messageData.id}`,
+			`${apiRoutes.UPDATE_MSG}${messageData._id}`,
 			messageData
 		);
 		set(state => ({
 			messages: state.messages.map(msg =>
-				msg.id === messageData.id ? { ...msg, ...response.data } : msg
+				msg._id === messageData._id ? { ...msg, ...response.data } : msg
 			),
 		}));
 	} catch (err) {

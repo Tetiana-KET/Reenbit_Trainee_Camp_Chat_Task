@@ -7,7 +7,7 @@ export function SelectedChatHeader() {
 	const { usersOnline } = useAuthStore();
 
 	return (
-		<div className='p-2.5 border-b-2 border-gray-400 bg-gray-200'>
+		<div className='selectedChatHeader p-2.5 border-b-2 border-gray-400 bg-gray-200'>
 			<div className='flex items-center justify-between'>
 				<div className='flex items-center gap-3'>
 					{/* Avatar */}

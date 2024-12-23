@@ -1,15 +1,15 @@
 import { create } from 'zustand';
 
 import { ChatStateInterface } from '../types/ChatStateInterface';
-import { Message } from '../types/Message';
+import { MessageInterface } from '../types/MessageInterface';
 
 import { getUsersController } from '../controllers/getUsers.Controller';
+import { deleteMessageController } from '../controllers/messages/deleteMessage.controller';
 import { getMessagesController } from '../controllers/messages/getMessages.controller';
 import { sendMessageController } from '../controllers/messages/sendMessage.controller';
 import { updateMessageController } from '../controllers/messages/updateMessage.controller';
-import { deleteMessageController } from '../controllers/messages/deleteMessage.controller';
 
-export const useChatStore = create<ChatStateInterface>(set => ({
+export const useChatStore = create<ChatStateInterface>((set, get) => ({
 	messages: [],
 	users: [],
 	selectedUser: null,
@@ -32,11 +32,11 @@ export const useChatStore = create<ChatStateInterface>(set => ({
 		await getMessagesController(set, userId);
 	},
 
-	sendMessage: async (messageData: Partial<Message>) => {
-		await sendMessageController(set, messageData);
+	sendMessage: async (messageData: Partial<MessageInterface>) => {
+		await sendMessageController(set, get, messageData);
 	},
 
-	updateMessage: async (messageData: Partial<Message>) => {
+	updateMessage: async (messageData: Partial<MessageInterface>) => {
 		await updateMessageController(set, messageData);
 	},
 

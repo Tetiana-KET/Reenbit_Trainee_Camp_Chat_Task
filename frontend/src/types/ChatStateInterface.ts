@@ -1,8 +1,8 @@
-import { Message } from './Message';
+import { MessageInterface } from './MessageInterface';
 import { User } from './User';
 
 export interface ChatStateInterface {
-	messages: Message[];
+	messages: MessageInterface[];
 	users: User[];
 	selectedUser: User | null;
 	isUsersLoading: boolean;
@@ -14,7 +14,7 @@ export interface ChatStateInterface {
 
 	getUsers: () => Promise<void>;
 	getMessages: (userId: string) => Promise<void>;
-	sendMessage: (messageData: Partial<Message>) => Promise<void>;
-	updateMessage: (messageData: Partial<Message>) => Promise<void>;
+	sendMessage: (messageData: Partial<MessageInterface>) => Promise<void>;
+	updateMessage: (messageData: Partial<MessageInterface>) => Promise<void>;
 	deleteMessage: (messageId: string) => Promise<void>;
 }

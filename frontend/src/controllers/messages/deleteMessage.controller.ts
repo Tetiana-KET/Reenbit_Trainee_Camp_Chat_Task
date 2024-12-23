@@ -15,7 +15,7 @@ export const deleteMessageController = async (
 	try {
 		await axiosInstance.delete(`${apiRoutes.DELETE_MSG}${messageId}`);
 		set(state => ({
-			messages: state.messages.filter(msg => msg.id !== messageId),
+			messages: state.messages.filter(msg => msg._id !== messageId),
 		}));
 	} catch (err) {
 		checkReturnCaughtError(err, 'deleteMessageController');
