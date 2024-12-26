@@ -22,7 +22,7 @@ export function SelectedChatHeader() {
 
 					{/* User info */}
 					<div>
-						<h3 className='font-medium'>{`${selectedUser?.firstName} ${selectedUser?.firstName}`}</h3>
+						<h3 className='font-medium'>{`${selectedUser?.firstName} ${selectedUser?.lastName}`}</h3>
 						<p className='text-sm text-base-content/70'>
 							{usersOnline.some(user => user._id === selectedUser?._id)
 								? 'Online'

@@ -46,14 +46,14 @@ export function ChatsList() {
 						<div className='relative mx-auto lg:mx-0'>
 							<img
 								src={user.profileImg || '/default-avatar.png'}
-								alt={`${user.firstName} ${user.firstName} avatar`}
+								alt={`${user.firstName} ${user.lastName} avatar`}
 								className='size-12 object-cover rounded-full'
 							/>
 						</div>
 
 						<div className='hidden lg:block flex-1 text-left min-w-0'>
 							<div className='flex justify-between'>
-								<div className='font-medium truncate'>{`${user.firstName} ${user.firstName}`}</div>
+								<div className='font-medium truncate'>{`${user.firstName} ${user.lastName}`}</div>
 								<div className=''>{'date'}</div>
 							</div>
 							<div className='text-sm text-zinc-400'>last message text</div>
