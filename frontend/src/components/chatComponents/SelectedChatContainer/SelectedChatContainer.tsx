@@ -1,5 +1,5 @@
 import { SelectedChatHeader } from '../SelectedChatHeader/SelectedChatHeader';
-import { SelectedChatMessageInput } from '../SelectedChatMessageInput/SelectedChatMessageInput';
+import { MessageInput } from '../MessageInput/MessageInput';
 
 import { MessagesComponent } from '../MessagesComponent/MessagesComponent';
 
@@ -8,7 +8,7 @@ export function SelectedChatContainer() {
 		<div className='selectedChatContainer flex flex-col flex-1 overflow-hidden h-full'>
 			<SelectedChatHeader />
 			<MessagesComponent />
-			<SelectedChatMessageInput />
+			<MessageInput />
 		</div>
 	);
 }
