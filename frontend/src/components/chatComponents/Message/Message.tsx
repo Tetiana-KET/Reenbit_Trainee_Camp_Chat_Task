@@ -32,7 +32,7 @@ export function Message({ message, selectedUser }: MessageProps) {
 			</div>
 			<div className='chat-footer mb-1'>
 				<time className='text-xs opacity-50 ml-1'>
-					{formatMessageTime(message.createdAt)}
+					{formatMessageTime(message.updatedAt)}
 				</time>
 			</div>
 			<div className='chat-bubble flex flex-col'>

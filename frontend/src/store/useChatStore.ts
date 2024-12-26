@@ -8,10 +8,12 @@ import { deleteMessageController } from '../controllers/messages/deleteMessage.c
 import { getMessagesController } from '../controllers/messages/getMessages.controller';
 import { sendMessageController } from '../controllers/messages/sendMessage.controller';
 import { updateMessageController } from '../controllers/messages/updateMessage.controller';
+import { getChatsController } from '../controllers/getChats.controller';
 
 export const useChatStore = create<ChatStateInterface>((set, get) => ({
 	messages: [],
 	users: [],
+	userChats: [],
 	selectedUser: null,
 	isUsersLoading: false,
 	isMessagesLoading: false,
@@ -30,6 +32,10 @@ export const useChatStore = create<ChatStateInterface>((set, get) => ({
 
 	getMessages: async (userId: string) => {
 		await getMessagesController(set, userId);
+	},
+
+	getChats: async () => {
+		await getChatsController(set);
 	},
 
 	sendMessage: async (messageData: Partial<MessageInterface>) => {

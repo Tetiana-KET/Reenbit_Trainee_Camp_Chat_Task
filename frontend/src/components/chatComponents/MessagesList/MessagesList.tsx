@@ -19,7 +19,11 @@ export function MessagesList() {
 			) : (
 				<>
 					{messages.map(message => (
-						<Message message={message} selectedUser={selectedUser} />
+						<Message
+							key={message._id}
+							message={message}
+							selectedUser={selectedUser}
+						/>
 					))}
 				</>
 			)}

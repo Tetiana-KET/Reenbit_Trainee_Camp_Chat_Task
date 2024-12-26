@@ -5,6 +5,7 @@ import { getMessages } from '../controllers/messages/getMessages.controller';
 import { sendMessage } from '../controllers/messages/sendMessage.controller';
 import { updateMessage } from '../controllers/messages/updateMessage.controller';
 import { deleteMessage } from '../controllers/messages/deleteMessage.controller';
+import { getChats } from '../controllers/messages/getChats.controller';
 
 const router = express.Router();
 
@@ -26,6 +27,18 @@ router.get(
 	async (req: Request, res: Response, next: NextFunction) => {
 		try {
 			await getMessages(req, res);
+		} catch (error) {
+			next(error);
+		}
+	}
+);
+
+router.get(
+	'/users/chats',
+	checkAuthentification,
+	async (req: Request, res: Response, next: NextFunction) => {
+		try {
+			await getChats(req, res);
 		} catch (error) {
 			next(error);
 		}
