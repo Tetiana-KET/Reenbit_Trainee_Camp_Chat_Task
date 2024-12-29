@@ -9,6 +9,7 @@ import { checkReturnCaughtError } from '../../utils/checkReturnCaughtError';
 
 export const loginController = async (
 	set: (state: Partial<AuthStateInterface>) => void,
+	get: () => AuthStateInterface,
 	data: Partial<FormData>
 ) => {
 	set({ isLoggingIn: true });
@@ -16,6 +17,7 @@ export const loginController = async (
 		const slogInResponse = await axiosInstance.post(apiRoutes.LOGIN, data);
 		set({ authUser: slogInResponse.data });
 		toast.success(authMessages.LOGIN_SUCCESS);
+		get().connectSocket();
 	} catch (err) {
 		checkReturnCaughtError(err, 'useAuthStore');
 	} finally {
