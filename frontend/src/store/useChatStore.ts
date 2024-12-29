@@ -9,6 +9,7 @@ import { getMessagesController } from '../controllers/messages/getMessages.contr
 import { sendMessageController } from '../controllers/messages/sendMessage.controller';
 import { updateMessageController } from '../controllers/messages/updateMessage.controller';
 import { getChatsController } from '../controllers/getChats.controller';
+import { useAuthStore } from './useAuthStore';
 
 export const useChatStore = create<ChatStateInterface>((set, get) => ({
 	messages: [],
@@ -49,5 +50,22 @@ export const useChatStore = create<ChatStateInterface>((set, get) => ({
 
 	deleteMessage: async (messageId: string) => {
 		await deleteMessageController(set, messageId);
+	},
+
+	subscribeToMessages: () => {
+		const { selectedUser } = get();
+		if (!selectedUser) return;
+
+		const socket = useAuthStore.getState().socket;
+
+		socket?.on('newMessage', newMessage => {
+			set({ messages: [...get().messages, newMessage] });
+		});
+	},
+
+	unsubscribeFromMessages: () => {
+		const socket = useAuthStore.getState().socket;
+
+		socket?.off('newMessage');
 	},
 }));

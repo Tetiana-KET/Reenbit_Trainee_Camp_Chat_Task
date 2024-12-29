@@ -28,4 +28,8 @@ io.on('connection', socket => {
 	});
 });
 
+export function getReceiverSocketId(userId: string) {
+	return userSocketMap[userId];
+}
+
 export { io, app, server };

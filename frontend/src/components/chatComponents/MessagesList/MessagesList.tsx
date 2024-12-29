@@ -5,12 +5,22 @@ import { MessagesSkeleton } from '../../skeletons/MessagesSkeleton';
 import { Message } from '../Message/Message';
 
 export function MessagesList() {
-	const { messages, selectedUser, isMessagesLoading, getMessages } =
-		useChatStore();
+	const {
+		messages,
+		selectedUser,
+		isMessagesLoading,
+		getMessages,
+		subscribeToMessages,
+		unsubscribeFromMessages,
+	} = useChatStore();
 
 	useEffect(() => {
 		getMessages(selectedUser?._id || '');
-	}, [getMessages, selectedUser]);
+
+		subscribeToMessages();
+
+		return () => unsubscribeFromMessages();
+	}, [getMessages, selectedUser, subscribeToMessages, unsubscribeFromMessages]);
 
 	return (
 		<div className='flex-1 h-full overflow-y-auto p-4 space-y-4'>

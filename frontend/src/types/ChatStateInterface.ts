@@ -20,4 +20,6 @@ export interface ChatStateInterface {
 	sendMessage: (messageData: Partial<MessageInterface>) => Promise<void>;
 	updateMessage: (messageData: Partial<MessageInterface>) => Promise<void>;
 	deleteMessage: (messageId: string) => Promise<void>;
+	subscribeToMessages: () => void;
+	unsubscribeFromMessages: () => void;
 }
