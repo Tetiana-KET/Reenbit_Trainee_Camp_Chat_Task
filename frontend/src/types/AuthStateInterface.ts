@@ -4,7 +4,7 @@ import { Socket } from 'socket.io-client';
 
 export interface AuthStateInterface {
 	authUser: User | null;
-	usersOnline: User[];
+	usersOnline: string[];
 	isSigningUp: boolean;
 	isLoggingIn: boolean;
 	isLoggingOut: boolean;
