@@ -9,6 +9,7 @@ import { checkReturnCaughtError } from '../../utils/checkReturnCaughtError';
 
 export const signupController = async (
 	set: (state: Partial<AuthStateInterface>) => void,
+	get: () => AuthStateInterface,
 	data: FormData
 ) => {
 	const userData = {
@@ -23,6 +24,7 @@ export const signupController = async (
 		const signUpResponse = await axiosInstance.post(apiRoutes.SIGNUP, userData);
 		set({ authUser: signUpResponse.data });
 		toast.success(authMessages.CREATED_SUCCESS);
+		get().connectSocket();
 	} catch (err) {
 		checkReturnCaughtError(err, 'useAuthStore');
 		set({ authUser: null });

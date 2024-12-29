@@ -6,13 +6,15 @@ import { AuthStateInterface } from '../../types/AuthStateInterface';
 import { checkReturnCaughtError } from '../../utils/checkReturnCaughtError';
 
 export const logoutController = async (
-	set: (state: Partial<AuthStateInterface>) => void
+	set: (state: Partial<AuthStateInterface>) => void,
+	get: () => AuthStateInterface
 ) => {
 	set({ isLoggingOut: true });
 	try {
 		await axiosInstance.post(apiRoutes.LOGOUT);
 		set({ authUser: null });
 		toast.success(authMessages.LOGOUT_SUCCESS);
+		get().disconnectSocket();
 	} catch (err) {
 		checkReturnCaughtError(err, 'useAuthStore');
 	} finally {

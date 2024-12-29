@@ -12,6 +12,7 @@ import { getChatsController } from '../controllers/getChats.controller';
 
 export const useChatStore = create<ChatStateInterface>((set, get) => ({
 	messages: [],
+	lastMessages: [],
 	users: [],
 	userChats: [],
 	selectedUser: null,

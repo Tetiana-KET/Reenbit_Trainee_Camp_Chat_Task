@@ -11,6 +11,7 @@ import messageRoutes from './routes/message.routes';
 
 import { PORT_MSG } from '@shared/consts/messages';
 import { fileURLToPath } from 'node:url';
+import { app, server } from './lib/socket';
 
 dotenv.config();
 const PORT = process.env.PORT;
@@ -19,7 +20,6 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const backendPath = path.resolve(__dirname, '..');
 
-const app = express();
 app.use(
 	cors({
 		origin: process.env.FRONT_URL,
@@ -40,10 +40,9 @@ if (process.env.NODE_ENV === 'production') {
 	});
 }
 
-let server;
 connectDB()
 	.then(() => {
-		server = app.listen(PORT, () => {
+		server.listen(PORT, () => {
 			console.log(`${PORT_MSG} ${PORT}`);
 		});
 	})
