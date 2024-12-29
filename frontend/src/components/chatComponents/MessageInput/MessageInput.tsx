@@ -1,58 +1,16 @@
-import { useState, useRef, ChangeEvent, FormEvent } from 'react';
 import { Image, Send, X } from 'lucide-react';
-import toast from 'react-hot-toast';
+import { useMessageInput } from '../../../hooks/useMessageInput';
 
-import { useChatStore } from '../../../store/useChatStore';
-
-export function SelectedChatMessageInput() {
-	const [text, setText] = useState('');
-	const [imgPreview, setImgPreview] = useState<string | null>(null);
-
-	const fileInputRef = useRef<HTMLInputElement | null>(null);
-
-	const { sendMessage } = useChatStore();
-
-	const handleImageChange = (e: ChangeEvent<HTMLInputElement>) => {
-		const file = e.target.files?.[0];
-		if (!file) return;
-
-		if (!file.type.startsWith('image/')) {
-			toast.error('Please select an image file');
-			return;
-		}
-
-		const reader = new FileReader();
-
-		reader.onloadend = () => {
-			if (typeof reader.result === 'string') {
-				setImgPreview(reader.result);
-			}
-		};
-		reader.readAsDataURL(file);
-	};
-
-	const handleImageDelete = () => {
-		setImgPreview(null);
-		if (fileInputRef.current) fileInputRef.current.value = '';
-	};
-
-	const handleSendMessage = async (e: FormEvent<HTMLFormElement>) => {
-		e.preventDefault();
-		if (!text.trim() && !imgPreview) return;
-
-		try {
-			await sendMessage({
-				text: text.trim(),
-				image: imgPreview,
-			});
-
-			setText('');
-			setImgPreview(null);
-			if (fileInputRef.current) fileInputRef.current.value = '';
-		} catch (error) {
-			console.error('Failed to send message:', error);
-		}
-	};
+export function MessageInput() {
+	const {
+		text,
+		setText,
+		imgPreview,
+		fileInputRef,
+		handleImageChange,
+		handleImageDelete,
+		handleSendMessage,
+	} = useMessageInput();
 
 	return (
 		<div className='SelectedChatFooter w-full p-2.5 border-b-2 border-gray-400 bg-gray-200'>
@@ -81,7 +39,7 @@ export function SelectedChatMessageInput() {
 					<input
 						type='text'
 						className='w-full input input-bordered rounded-lg input-sm sm:input-md'
-						placeholder='Type a message...'
+						placeholder='Type your message...'
 						value={text}
 						onChange={e => setText(e.target.value)}
 					/>

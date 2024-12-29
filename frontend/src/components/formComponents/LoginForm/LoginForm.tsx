@@ -19,7 +19,7 @@ export function LoginForm() {
 	};
 
 	return (
-		<div className='w-full h-full m-auto'>
+		<div className='flex justify-center w-full m-auto'>
 			<div className='w-full max-w-md space-y-8 p-6 sm:p-12  auth-form__container'>
 				<form onSubmit={handleSubmit} className='space-y-6'>
 					<TextInput

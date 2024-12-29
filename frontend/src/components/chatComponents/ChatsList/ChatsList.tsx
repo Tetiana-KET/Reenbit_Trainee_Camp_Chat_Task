@@ -1,19 +1,43 @@
 import { useEffect } from 'react';
-import { Users } from 'lucide-react';
+import { Users, Image } from 'lucide-react';
 
 import { useChatStore } from '../../../store/useChatStore';
 
 import { ChatsListSkeleton } from '../../skeletons/ChatsListSkeleton';
 
+import { formatTimeForChatList } from '../../../utils/formatMessageTime';
+
 import styles from './ChatsList.module.css';
 
 export function ChatsList() {
-	const { users, selectedUser, isUsersLoading, setSelectedUser, getUsers } =
-		useChatStore();
+	const {
+		lastMessages,
+		userChats,
+		selectedUser,
+		isUsersLoading,
+		setSelectedUser,
+		getChats,
+	} = useChatStore();
 
 	useEffect(() => {
-		getUsers();
-	}, [getUsers]);
+		getChats();
+	}, [getChats]);
+
+	const getLastMessagePreview = (userId: string) => {
+		const lastMessage = lastMessages.find(message => {
+			return message.userId === userId;
+		});
+
+		if (!lastMessage) {
+			return { text: '', date: '', isImage: false };
+		}
+
+		return {
+			text: lastMessage.image ? 'Image' : lastMessage.text || '',
+			date: formatTimeForChatList(lastMessage.updatedAt) || '',
+			isImage: Boolean(lastMessage.image),
+		};
+	};
 
 	if (isUsersLoading) return <ChatsListSkeleton />;
 
@@ -29,11 +53,14 @@ export function ChatsList() {
 			</div>
 
 			<div className='overflow-y-auto w-full p-3'>
-				{users.map(user => (
-					<button
-						key={user._id}
-						onClick={() => setSelectedUser(user)}
-						className={`
+				{userChats.map(user => {
+					const { text, date, isImage } = getLastMessagePreview(user._id);
+
+					return (
+						<button
+							key={user._id}
+							onClick={() => setSelectedUser(user)}
+							className={`
               w-full p-3 flex items-center gap-3 border-b-2 border-y-gray-300
               hover:bg-base-300 transition-colors
               ${
@@ -42,24 +69,33 @@ export function ChatsList() {
 									: ''
 							}
             `}
-					>
-						<div className='relative mx-auto lg:mx-0'>
-							<img
-								src={user.profileImg || '/default-avatar.png'}
-								alt={`${user.firstName} ${user.firstName} avatar`}
-								className='size-12 object-cover rounded-full'
-							/>
-						</div>
-
-						<div className='hidden lg:block flex-1 text-left min-w-0'>
-							<div className='flex justify-between'>
-								<div className='font-medium truncate'>{`${user.firstName} ${user.firstName}`}</div>
-								<div className=''>{'date'}</div>
+						>
+							<div className='relative mx-auto lg:mx-0 flex items-center'>
+								<img
+									src={user.profileImg || '/default-avatar.png'}
+									alt={`${user.firstName} ${user.lastName} avatar`}
+									className='size-12 object-cover rounded-full'
+								/>
 							</div>
-							<div className='text-sm text-zinc-400'>last message text</div>
-						</div>
-					</button>
-				))}
+
+							<div className='hidden lg:block flex-1 text-left min-w-0'>
+								<div className='flex justify-between'>
+									<div className='font-medium truncate'>{`${user.firstName} ${user.lastName}`}</div>
+									<div className='text-[12px] truncate flex items-center'>
+										{date}
+									</div>
+								</div>
+								<div className='text-sm text-zinc-400 truncate'>
+									{isImage ? (
+										<Image size={14} className='text-zinc-500' />
+									) : (
+										text
+									)}
+								</div>
+							</div>
+						</button>
+					);
+				})}
 			</div>
 		</aside>
 	);
